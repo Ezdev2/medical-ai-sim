@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-ink-950 text-slate-200 font-sans antialiased;
+    background-image:
+      radial-gradient(1200px 600px at 80% -10%, rgba(45, 212, 191, 0.08), transparent 60%),
+      radial-gradient(900px 500px at 10% 110%, rgba(245, 158, 11, 0.05), transparent 60%);
+    background-attachment: fixed;
+  }
+  ::selection {
+    @apply bg-teal/30 text-white;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-ink-700 bg-ink-800/60 backdrop-blur-sm;
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:border-teal/60 hover:bg-ink-700/60 hover:shadow-glow;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-teal text-ink-950 hover:bg-teal-glow shadow-glow;
+  }
+  .btn-ghost {
+    @apply btn border border-ink-600 text-slate-300 hover:border-teal/60 hover:text-white;
+  }
+  .input {
+    @apply w-full rounded-lg border border-ink-600 bg-ink-900/70 px-3 py-2 text-sm text-slate-100 placeholder-slate-500 outline-none transition-colors focus:border-teal focus:ring-1 focus:ring-teal/40;
+  }
+  .label {
+    @apply block text-xs font-medium uppercase tracking-wider text-slate-400 mb-1.5;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+  .section-title {
+    @apply text-2xl font-semibold text-white;
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(45, 212, 191, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45, 212, 191, 0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
+
+/* thin scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0b1119; }
+::-webkit-scrollbar-thumb { background: #243248; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #33425c; }
