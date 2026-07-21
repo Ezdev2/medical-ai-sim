@@ -12,11 +12,11 @@ const modes: { id: Mode; label: string; icon: typeof Bot; desc: string; cycle: s
 
 const specs: Record<Mode, { label: string; items: string[] }[]> = {
   robot: [
-    { label: 'Base', items: ['BW-TEC 2774 Auto Balloon Forming', 'Footprint 1050×720×2240mm', '~315 kg'] },
+    { label: 'Base', items: ['NATEC 2774 Auto Balloon Forming', 'Footprint 1050×720×2240mm', '~315 kg'] },
     { label: 'Range', items: ['Balloon Ø 4–34mm', 'Length 2–110mm', 'Temp 20–250°C', 'Pressure 0–50 bar'] },
   ],
   tricavity: [
-    { label: 'Base', items: ['BW-TEC 2530 "4up" layout (3 cavities)', 'Footprint 1550×990×1640mm', '~400 kg'] },
+    { label: 'Base', items: ['NATEC 2530 "4up" layout (3 cavities)', 'Footprint 1550×990×1640mm', '~400 kg'] },
     { label: 'Range', items: ['Up to 600 balloons/shift', 'Mold Ø 1–14mm', 'Mold length 8–60mm', 'Temp 20–250°C'] },
   ],
   merged: [
@@ -38,7 +38,7 @@ export default function MachinePage() {
         </span>
         <h1 className="text-3xl font-bold text-white">Robot Arm & Tri-Cavity Mold</h1>
         <p className="mt-2 max-w-3xl text-sm text-slate-400">
-          The centerpiece — modelled on real BW-TEC forming machines. Toggle between the single-cavity
+          The centerpiece — modelled on real NATEC forming machines. Toggle between the single-cavity
           robotic arm (2774), the tri-cavity mold (2530 layout), and the merged hybrid where a tri-gripper
           services all three cavities. Drag to orbit, scroll to zoom, hover parts for labels.
         </p>

@@ -1,9 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
-import { Database, Bot, LayoutGrid, Gauge, ArrowRight, Cpu, Layers, Wind } from 'lucide-react';
+import { Database, Bot, LayoutGrid, Gauge, ArrowRight, Cpu } from 'lucide-react';
 import LayerSimulator from '../components/LayerSimulator';
-
-const HeroScene = lazy(() => import('../components/HeroScene'));
 
 const solutions = [
   {
@@ -13,9 +10,6 @@ const solutions = [
     title: 'Digitalization',
     tag: 'Full interactive demo',
     desc: 'Replace paper forms & manual orders with a digital workflow across client, engineer and operator roles.',
-    stats: [
-      { value: '+8%', label: 'Effective machine hours — setup time recovered by injecting the parameter script directly, no manual re-entry.' },
-    ],
     accent: 'teal' as const,
   },
   {
@@ -25,10 +19,6 @@ const solutions = [
     title: 'Robot Arm & Tri-Cavity Mold',
     tag: '3D centerpiece',
     desc: 'Automated load/unload robot arm merged with a 3-cavity mold — modelled on real NATEC forming machines.',
-    stats: [
-      { value: '×3', label: 'Balloons per cycle — 3 cavities molded simultaneously, same heat/cool cycle time.' },
-      { value: '+30%', label: 'Throughput — OEE 60%→65% and active hours 10h→12h, removing manual handoff delays.' },
-    ],
     accent: 'teal' as const,
   },
   {
@@ -38,9 +28,6 @@ const solutions = [
     title: 'Cleanroom Layout Optimization',
     tag: 'Presentation',
     desc: 'Before/after floor-plan comparison showing improved material flow and reduced operator travel.',
-    stats: [
-      { value: '+2%', label: 'OEE — fewer micro-stops from operator travel, zero CapEx.' },
-    ],
     accent: 'amber' as const,
   },
   {
@@ -50,9 +37,6 @@ const solutions = [
     title: 'Cycle Time Reduction',
     tag: 'Interactive chart',
     desc: 'Stack the levers — thinner wall, pre-heating, nucleating agent, conformal cooling — and watch cycle time drop.',
-    stats: [
-      { value: '-18%', label: 'Cycle time — combined effect of the four levers, directly raising cycles/hour.' },
-    ],
     accent: 'amber' as const,
   },
 ];
@@ -154,17 +138,7 @@ export default function HomePage() {
                 >
                   {s.tag}
                 </span>
-                <p className="mt-3 text-sm text-slate-400">{s.desc}</p>
-                <div className="mt-3 flex-1 space-y-2 border-t border-white/5 pt-3">
-                  {s.stats.map((st) => (
-                    <div key={st.label} className="flex items-start gap-2">
-                      <span className={`shrink-0 font-mono text-sm font-bold ${accent === 'amber' ? 'text-amber' : 'text-teal'}`}>
-                        {st.value}
-                      </span>
-                      <span className="text-xs leading-snug text-slate-500">{st.label}</span>
-                    </div>
-                  ))}
-                </div>
+                <p className="mt-3 flex-1 text-sm text-slate-400">{s.desc}</p>
                 <span
                   className={`mt-4 inline-flex items-center gap-1 text-sm font-medium ${
                     accent === 'amber' ? 'text-amber' : 'text-teal'
