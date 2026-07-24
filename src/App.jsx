@@ -4,8 +4,9 @@ import RoleHub from './pages/RoleHub.jsx';
 import ClientPortal from './pages/ClientPortal.jsx';
 import EngineerPortal from './pages/EngineerPortal.jsx';
 import OperatorPortal from './pages/OperatorPortal.jsx';
+import PresentationDeck from './pages/Presentation.jsx';
 
-const VALID_ROUTES = new Set(['home', 'client', 'engineer', 'operator']);
+const VALID_ROUTES = new Set(['home', 'client', 'engineer', 'operator', 'slides']);
 
 function routeFromHash() {
   const route = window.location.hash.replace('#/', '') || 'home';
@@ -26,14 +27,21 @@ export default function App() {
     setRouteState(nextRoute);
   };
 
+  // Hide the app header on the slide page (since PresentationDeck has its own header)
+  const showAppHeader = route !== 'slides';
+
   return (
     <div className="app-shell">
-      <DemoHeader route={route} setRoute={setRoute} />
-      <main>
+      {showAppHeader && <DemoHeader route={route} setRoute={setRoute} />}
+
+      <main className={route === 'slides' ? 'h-screen w-screen' : undefined}>
         {route === 'home' && <RoleHub setRoute={setRoute} />}
         {route === 'client' && <ClientPortal setRoute={setRoute} />}
         {route === 'engineer' && <EngineerPortal setRoute={setRoute} />}
         {route === 'operator' && <OperatorPortal setRoute={setRoute} />}
+
+        {/* Slides page */}
+        {route === 'slides' && <PresentationDeck />}
       </main>
     </div>
   );
