@@ -502,7 +502,7 @@ button:disabled {
 }
 
 .two-column {
-  display: grid;
+  /* display: grid; */
   grid-template-columns: minmax(0, 1fr) 420px;
   gap: 1.2rem;
   align-items: start;
