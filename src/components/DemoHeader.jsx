@@ -2,10 +2,10 @@ import { isFirebaseConfigured } from "../services/firebase.js";
 
 export default function DemoHeader({ route, setRoute }) {
   const nav = [
-    { id: "home", label: "Accueil" },
+    { id: "home", label: "Home" },
     { id: "client", label: "Client" },
-    { id: "engineer", label: "Ingénieur" },
-    { id: "operator", label: "Opérateur" },
+    { id: "engineer", label: "Engineer" },
+    { id: "operator", label: "Operator" },
   ];
 
   return (

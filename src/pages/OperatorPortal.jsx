@@ -55,7 +55,7 @@ export default function OperatorPortal({ setRoute }) {
     if (selectedJob) {
       await updateMachineJob(selectedJob.id, {
         status: 'OPERATOR_CHECKED_IN',
-        statusLabel: 'Opérateur check-in',
+        statusLabel: 'Operator checked-in',
         currentOperator: checkedInOperator,
       });
     }
@@ -85,15 +85,15 @@ export default function OperatorPortal({ setRoute }) {
     <div className="page operator-page">
       <section className="portal-heading">
         <div>
-          <p className="eyebrow">Vue Opérateur</p>
-          <h1>Tablette cleanroom : check-in, paramètres validés et yield.</h1>
+          <p className="eyebrow">Operator View</p>
+          <h1>Cleanroom tablet: check-in, validated parameters, and yield.</h1>
           <p>
-            L’opérateur reçoit seulement l’information utile : layout assigné, job BFM, parison cut visuel,
-            paramètres principaux et check-out. Moins de papier, moins d’erreurs, plus de données exploitables.
+            The operator receives only useful information: assigned layout, BFM job, visual parison cut,
+            main parameters, and check-out. Less paper, fewer errors, more actionable data.
           </p>
         </div>
         <button className="ghost" onClick={() => setRoute('client')}>
-          Recommencer demo →
+          Restart demo →
         </button>
       </section>
 
@@ -103,12 +103,12 @@ export default function OperatorPortal({ setRoute }) {
             <div className="form-section-title">
               <span>✓</span>
               <div>
-                <h2>Check-in opérateur</h2>
-                <p>Le badge assigne automatiquement une zone de layout.</p>
+                <h2>Operator Check-in</h2>
+                <p>The badge automatically assigns a layout zone.</p>
               </div>
             </div>
             <label>
-              Nom opérateur
+              Operator Name
               <input
                 required
                 value={operatorForm.operatorName}
@@ -130,7 +130,7 @@ export default function OperatorPortal({ setRoute }) {
 
           {operator && (
             <div className="side-card operator-card">
-              <p className="eyebrow">Session active</p>
+              <p className="eyebrow">Active Session</p>
               <h2>{operator.operatorName}</h2>
               <dl className="summary-list">
                 <div>
@@ -138,7 +138,7 @@ export default function OperatorPortal({ setRoute }) {
                   <dd>{operator.badgeId}</dd>
                 </div>
                 <div>
-                  <dt>Layout assigné</dt>
+                  <dt>Assigned Layout</dt>
                   <dd>{operator.layoutAssignment}</dd>
                 </div>
                 <div>
@@ -152,7 +152,7 @@ export default function OperatorPortal({ setRoute }) {
           <div className="side-card">
             <div className="queue-header compact-row">
               <div>
-                <p className="eyebrow">Jobs injectés</p>
+                <p className="eyebrow">Injected Jobs</p>
                 <h2>BFM ready</h2>
               </div>
               <span>{jobs.length}</span>
@@ -170,10 +170,10 @@ export default function OperatorPortal({ setRoute }) {
             ))}
             {jobs.length === 0 && (
               <div className="empty-state">
-                <strong>Aucun job injecté.</strong>
-                <span>Validez et injectez une recette côté ingénieur.</span>
+                <strong>No jobs injected.</strong>
+                <span>Validate and inject a recipe from the engineer side.</span>
                 <button className="primary" onClick={() => setRoute('engineer')}>
-                  Ouvrir ingénieur
+                  Open Engineer View
                 </button>
               </div>
             )}
@@ -187,19 +187,19 @@ export default function OperatorPortal({ setRoute }) {
                 <span className="tablet-camera" />
                 <strong>NATEC Cleanroom Tablet</strong>
               </div>
-              <span>{new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}</span>
+              <span>{new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</span>
             </div>
 
             {selectedJob ? (
               <div className="tablet-content">
                 <div className="tablet-hero">
                   <div>
-                    <p className="eyebrow">Job actif</p>
+                    <p className="eyebrow">Active Job</p>
                     <h2>{selectedJob.orderId}</h2>
                     <StatusBadge status={selectedJob.order?.status} label={selectedJob.statusLabel} />
                   </div>
                   <div className="tablet-metric">
-                    <span>Cycle estimé</span>
+                    <span>Estimated Cycle</span>
                     <strong>{formatNumber(params.estimatedCycleTimeSec, 1)} s</strong>
                   </div>
                 </div>
@@ -239,14 +239,14 @@ export default function OperatorPortal({ setRoute }) {
 
                 <form className="checkout-card" onSubmit={handleCheckout}>
                   <div>
-                    <p className="eyebrow">Fin de shift</p>
-                    <h2>Check-out production</h2>
-                    <p>Le total est lu depuis le compteur BFM; l’opérateur indique seulement les mauvais ballons.</p>
+                    <p className="eyebrow">End of Shift</p>
+                    <h2>Production Check-out</h2>
+                    <p>The total is read from the BFM counter; the operator only indicates defective balloons.</p>
                   </div>
 
                   <div className="field-grid two">
                     <label>
-                      Total ballons formés — lu BFM
+                      Total balloons formed — BFM read
                       <input
                         type="number"
                         min="0"
@@ -255,7 +255,7 @@ export default function OperatorPortal({ setRoute }) {
                       />
                     </label>
                     <label>
-                      Mauvais ballons
+                      Defective balloons
                       <input
                         type="number"
                         min="0"
@@ -264,7 +264,7 @@ export default function OperatorPortal({ setRoute }) {
                       />
                     </label>
                     <label className="span-two">
-                      Notes optionnelles
+                      Optional notes
                       <input
                         value={notes}
                         onChange={(event) => setNotes(event.target.value)}
@@ -274,7 +274,7 @@ export default function OperatorPortal({ setRoute }) {
                   </div>
 
                   <button className="primary full" disabled={!operator || saving} type="submit">
-                    {!operator ? 'Faire check-in avant check-out' : saving ? 'Enregistrement...' : 'Check-out & enregistrer yield'}
+                    {!operator ? 'Check-in before checking out' : saving ? 'Saving...' : 'Check-out & save yield'}
                   </button>
                 </form>
 
@@ -293,16 +293,16 @@ export default function OperatorPortal({ setRoute }) {
                       <strong>{record.yieldPercent}%</strong>
                     </div>
                     <p>
-                      Donnée enregistrée dans le dataset production : elle relie commande, recette BFM,
-                      opérateur, layout, output et défauts.
+                      Data saved in the production dataset: it links the order, BFM recipe,
+                      operator, layout, output, and defects.
                     </p>
                   </div>
                 )}
               </div>
             ) : (
               <div className="empty-state tall tablet-empty">
-                <strong>Aucun job prêt pour opérateur.</strong>
-                <span>Le job apparaîtra ici après injection BFM côté ingénieur.</span>
+                <strong>No jobs ready for operator.</strong>
+                <span>The job will appear here after BFM injection from the engineer side.</span>
               </div>
             )}
           </div>

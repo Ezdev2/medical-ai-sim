@@ -2,30 +2,37 @@ export default function FutureDataCard() {
   return (
     <section className="future-card">
       <div>
-        <p className="eyebrow">Pourquoi ces données changent l’échelle ?</p>
-        <h3>Dataset process → IA plus avancée</h3>
+        <p className="eyebrow">Why Does This Data Matter?</p>
+        <h3>Process Dataset → More Advanced AI</h3>
       </div>
+
       <div className="data-grid">
         <div>
-          <strong>Commande</strong>
-          <span>dimensions, matériau, quantité, pression cible</span>
+          <strong>Customer Order</strong>
+          <span>dimensions, material, quantity, target pressure</span>
         </div>
+
         <div>
-          <strong>Paramètres BFM</strong>
-          <span>températures, pression, stretch, cycle time</span>
+          <strong>BFM Parameters</strong>
+          <span>temperatures, pressure, stretch, cycle time</span>
         </div>
+
         <div>
-          <strong>Production réelle</strong>
-          <span>ballons formés par shift, défauts, yield</span>
+          <strong>Production Data</strong>
+          <span>balloons produced per shift, defects, yield</span>
         </div>
+
         <div>
-          <strong>Apprentissage futur</strong>
-          <span>prédire les meilleurs setups et réduire les essais</span>
+          <strong>Future Learning</strong>
+          <span>predict the best setups and reduce trial-and-error</span>
         </div>
       </div>
+
       {/* <p>
-        Chaque commande validée devient un exemple structuré. À mesure que NATEC collecte plus de données,
-        l’IA peut recommander des paramètres plus précis, détecter les dérives et soutenir la scalabilité.
+        Every validated order becomes a structured training example. As NATEC
+        collects more production data, the AI can recommend more accurate
+        machine parameters, detect process drift, and support production
+        scalability.
       </p> */}
     </section>
   );
