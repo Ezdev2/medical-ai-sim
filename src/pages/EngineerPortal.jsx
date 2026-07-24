@@ -303,7 +303,7 @@ export default function EngineerPortal({ setRoute }) {
                 </section>
               </div>
 
-              {/* <FutureDataCard /> */}
+              <FutureDataCard />
             </>
           ) : (
             <div className="panel empty-state tall">

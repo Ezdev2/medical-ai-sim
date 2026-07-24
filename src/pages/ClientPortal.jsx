@@ -8,7 +8,7 @@ const INITIAL_FORM = {
   organization: "Client Demo / NATEC",
   contactName: "Demo User",
   contactEmail: "client@natec-demo.mu",
-  material: "Pebax",
+  material: "Nylon 12",
   balloonDiameterMm: 4,
   balloonLengthMm: 30,
   balloonWidthMm: 4,
@@ -22,7 +22,7 @@ const INITIAL_FORM = {
   clinicalUse: "PTCA / Catheter Balloon Forming Demo",
 };
 
-const MATERIALS = ["Pebax", "Nylon 12", "PET", "Polyurethane", "Silicone"];
+const MATERIALS = ["Nylon 12", "Pebax", "PET", "Polyurethane", "Silicone"];
 
 function numberPayload(form) {
   return {
@@ -333,7 +333,7 @@ export default function ClientPortal({ setRoute }) {
           </div>
         </form>
 
-        <aside className="side-card sticky-card">
+        {/* <aside className="side-card sticky-card">
           <p className="eyebrow">Live Order</p>
 
           {submittedOrder ? (
@@ -406,7 +406,7 @@ export default function ClientPortal({ setRoute }) {
 
             {orders.length === 0 && <p>No orders available yet.</p>}
           </div>
-        </aside>
+        </aside> */}
       </div>
     </div>
   );

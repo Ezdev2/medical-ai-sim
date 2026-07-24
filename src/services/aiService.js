@@ -1,11 +1,12 @@
 import { clamp, toNumber } from '../utils/format.js';
 
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
-const GEMINI_MODEL = import.meta.env.VITE_GEMINI_MODEL || 'gemini-1.5-flash';
+// Updated default model name to ensure compatibility with the API
+const GEMINI_MODEL = import.meta.env.VITE_GEMINI_MODEL || 'gemini-2.5-flash';
 
 const MATERIAL_PROFILES = {
-  Pebax: { moldTemp: 76, preheatTemp: 92, stretchSpeed: 18, pressureFactor: 0.42, notes: 'Flexible; montée en pression progressive.' },
   'Nylon 12': { moldTemp: 86, preheatTemp: 106, stretchSpeed: 15, pressureFactor: 0.48, notes: 'Bon compromis rigidité/flexibilité.' },
+  Pebax: { moldTemp: 76, preheatTemp: 92, stretchSpeed: 18, pressureFactor: 0.42, notes: 'Flexible; montée en pression progressive.' },
   PET: { moldTemp: 96, preheatTemp: 124, stretchSpeed: 12, pressureFactor: 0.58, notes: 'Demande plus de chaleur et contrôle de refroidissement.' },
   Polyurethane: { moldTemp: 68, preheatTemp: 82, stretchSpeed: 20, pressureFactor: 0.38, notes: 'Limiter surchauffe; risque de tackiness.' },
   Silicone: { moldTemp: 62, preheatTemp: 74, stretchSpeed: 16, pressureFactor: 0.34, notes: 'Pression basse; maintien plus long.' },
@@ -39,7 +40,7 @@ async function callGemini(order) {
   if (!GEMINI_API_KEY) return null;
 
   const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
+    `[https://generativelanguage.googleapis.com/v1beta/models/$](https://generativelanguage.googleapis.com/v1beta/models/$){GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -157,7 +158,6 @@ export function buildBfmScript(order, parameters) {
 }
 
 export async function generateBFMRecipe(order) {
-  // Maintains the visible 3-second AI calculation moment for the presentation.
   await sleep(3000);
 
   try {
