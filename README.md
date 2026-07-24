@@ -48,7 +48,7 @@ Sans clé Gemini, le bouton IA utilise un moteur de calcul simulé pour garder l
 ## Parcours conseillé pendant la présentation
 
 1. Page d'accueil → **Je suis Client**.
-2. Le jury remplit une commande; un ID automatique est généré.
+2. Le client remplit une commande; un ID automatique est généré.
 3. Revenir accueil → **Je suis Ingénieur**.
 4. Sélectionner la commande en temps réel.
 5. Cliquer **Calculer avec IA** : animation 3 secondes + paramètres.

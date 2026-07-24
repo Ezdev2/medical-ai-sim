@@ -115,7 +115,7 @@ export default function EngineerPortal({ setRoute }) {
 
   return (
     <div className="page engineer-page">
-      <section className="portal-heading">
+      {/* <section className="portal-heading">
         <div>
           <p className="eyebrow">Vue Ingénieur</p>
           <h1>Calcul IA, validation process et injection machine.</h1>
@@ -127,7 +127,7 @@ export default function EngineerPortal({ setRoute }) {
         <button className="ghost" onClick={() => setRoute('operator')}>
           Voir côté opérateur →
         </button>
-      </section>
+      </section> */}
 
       <div className="engineer-grid">
         <aside className="order-queue">
@@ -156,7 +156,7 @@ export default function EngineerPortal({ setRoute }) {
           {queue.length === 0 && (
             <div className="empty-state tall">
               <strong>Aucune commande.</strong>
-              <span>Demandez au jury de passer une commande côté client.</span>
+              <span>Demandez au client de passer une commande côté client.</span>
               <button className="primary" onClick={() => setRoute('client')}>
                 Ouvrir vue client
               </button>
@@ -303,7 +303,7 @@ export default function EngineerPortal({ setRoute }) {
                 </section>
               </div>
 
-              <FutureDataCard />
+              {/* <FutureDataCard /> */}
             </>
           ) : (
             <div className="panel empty-state tall">

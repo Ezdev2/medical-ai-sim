@@ -23,10 +23,10 @@ export default function FutureDataCard() {
           <span>prédire les meilleurs setups et réduire les essais</span>
         </div>
       </div>
-      <p>
+      {/* <p>
         Chaque commande validée devient un exemple structuré. À mesure que NATEC collecte plus de données,
         l’IA peut recommander des paramètres plus précis, détecter les dérives et soutenir la scalabilité.
-      </p>
+      </p> */}
     </section>
   );
 }

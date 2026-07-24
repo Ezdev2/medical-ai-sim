@@ -41,7 +41,7 @@ export default function DemoHeader({ route, setRoute }) {
         className={`realtime-pill ${isFirebaseConfigured ? "online" : "offline"}`}
       >
         <span />
-        {isFirebaseConfigured ? "Firebase temps réel" : "Mode demo local"}
+        {isFirebaseConfigured ? "" : "Local mode"}
       </div>
       <div>
         <a

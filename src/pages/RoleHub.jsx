@@ -4,29 +4,29 @@ export default function RoleHub({ setRoute }) {
   const cards = [
     {
       route: 'client',
-      label: 'Je suis Client',
-      title: 'Passer une commande ballon',
+      label: 'I am a Customer',
+      title: 'Place a Balloon Order',
       description:
-        'Le jury saisit les dimensions, matériau et quantité. La référence commande est générée automatiquement.',
-      metric: '0 papier',
+        'The user enters the dimensions, material, and quantity. The order reference is generated automatically.',
+      metric: '0 paper',
       icon: '01',
     },
     {
       route: 'engineer',
-      label: 'Je suis Ingénieur',
-      title: 'Calcul IA + validation process',
+      label: 'I am an Engineer',
+      title: 'AI Calculation + Process Validation',
       description:
-        'Visualiser la commande en temps réel, lancer le calcul IA, corriger si besoin, puis injecter vers la BFM.',
-      metric: '~3 sec IA',
+        'View the order in real time, run the AI calculation, make adjustments if needed, then send it to the BFM.',
+      metric: '~3 sec AI',
       icon: '02',
     },
     {
       route: 'operator',
-      label: 'Je suis Opérateur',
-      title: 'Tablette cleanroom + yield',
+      label: 'I am an Operator',
+      title: 'Cleanroom Tablet + Yield',
       description:
-        'Check-in badge, voir parison cut et paramètres validés, check-out avec défauts et rendement automatique.',
-      metric: 'Yield live',
+        'Badge check-in, view validated parison cut and process parameters, then check out with defects and automatic yield tracking.',
+      metric: 'Live Yield',
       icon: '03',
     },
   ];
@@ -35,38 +35,39 @@ export default function RoleHub({ setRoute }) {
     <div className="page page-home">
       <section className="hero-card">
         <div className="hero-copy">
-          <p className="eyebrow">Digitalization module · Solution 1/5</p>
-          <h1>Transformer une commande client en paramètres BFM validés.</h1>
+          <p className="eyebrow">Digitalization</p>
+          <h1>Transform a Customer Order into Validated BFM Machine Parameters.</h1>
           <p>
-            Ce demo montre comment Quadracure Innovators réduit le temps de paramétrage machine :
-            saisie client structurée, calcul IA, validation ingénieur, injection Windows BFM et feedback opérateur.
+            This demo shows how Quadracure Innovators reduces machine setup time:
+            structured customer order entry, AI calculation, engineer validation,
+            Windows BFM integration, and operator feedback.
           </p>
           <div className="hero-actions">
             <button className="primary" onClick={() => setRoute('client')}>
-              Démarrer comme Client
+              Start as Customer
             </button>
             <button className="ghost" onClick={() => setRoute('engineer')}>
-              Aller directement Ingénieur
+              Go Directly to Engineer
             </button>
           </div>
         </div>
-        <div className="hero-panel" aria-label="Chaîne digitale">
-          <div className="pipeline-node active">Client order</div>
+        <div className="hero-panel" aria-label="Digital Workflow">
+          <div className="pipeline-node active">Customer Order</div>
           <div className="pipeline-line" />
-          <div className="pipeline-node ai">AI recipe</div>
+          <div className="pipeline-node ai">AI Recipe</div>
           <div className="pipeline-line" />
-          <div className="pipeline-node">Engineer approval</div>
+          <div className="pipeline-node">Engineer Approval</div>
           <div className="pipeline-line" />
           <div className="pipeline-node machine">BFM Windows</div>
           <div className="pipeline-line" />
-          <div className="pipeline-node operator">Operator yield</div>
+          <div className="pipeline-node operator">Operator Yield</div>
         </div>
       </section>
 
       <section>
         <div className="section-title">
-          <p className="eyebrow">Choix du rôle</p>
-          <h2>Je suis un...</h2>
+          <p className="eyebrow">Choose Your Role</p>
+          <h2>I am a...</h2>
         </div>
         <div className="role-grid">
           {cards.map((card) => (
@@ -75,26 +76,26 @@ export default function RoleHub({ setRoute }) {
               <span className="role-metric">{card.metric}</span>
               <h3>{card.label}</h3>
               <strong>{card.title}</strong>
-              <p>{card.description}</p>
+              {/* <p>{card.description}</p> */}
             </button>
           ))}
         </div>
       </section>
 
-      <section className="impact-strip">
+      {/* <section className="impact-strip">
         <div>
-          <strong>Problème actuel</strong>
-          <span>Paramétrage long, feuilles papier, données non capitalisées.</span>
+          <strong>Current Challenge</strong>
+          <span>Lengthy machine setup, paper-based forms, and unstructured data.</span>
         </div>
         <div>
-          <strong>Solution demo</strong>
-          <span>Flux numérique traçable avec IA et validation process.</span>
+          <strong>Demo Solution</strong>
+          <span>Traceable digital workflow with AI and process validation.</span>
         </div>
         <div>
-          <strong>Objectif compétition</strong>
-          <span>Contribuer à l’augmentation de production NATEC ×5.</span>
+          <strong>Competition Goal</strong>
+          <span>Support the NATEC ×5 production increase initiative.</span>
         </div>
-      </section>
+      </section> */}
 
       <FutureDataCard />
     </div>

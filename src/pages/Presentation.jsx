@@ -1,5 +1,11 @@
-import React, { useState, useMemo, useEffect, useCallback, useRef } from 'react';
-import { Maximize, Minimize, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, {
+  useState,
+  useMemo,
+  useEffect,
+  useCallback,
+  useRef,
+} from "react";
+import { Maximize, Minimize, ChevronLeft, ChevronRight } from "lucide-react";
 
 // ==========================================
 // DATA STRUCTURE (Dynamic & Configurable)
@@ -10,19 +16,54 @@ const TARGET_PRODUCTION = 750_000;
 const SCALE_MAX = 900_000;
 
 const SOLUTIONS_DATA = [
-  { id: 'clean', name: 'Layout Optimization', note: 'No investment', mult: 1.02, invRs: 0, weeks: 3 },
-  { id: 'dig', name: 'Digitalization + AI', note: 'Low investment', mult: 1.08, invRs: 1.0, weeks: 6 },
-  { id: 'tri', name: 'Tri-Cavity Mold', note: 'Medium investment', mult: 3.0, invRs: 7.5, weeks: 12 },
-  { id: 'radical', name: 'Radical Re-Designs', note: 'High investment', mult: 1.3, invRs: 12.5, weeks: 14 },
-  { id: 'robot', name: 'Automation (Robot arm)', note: 'High investment / Low volume gain', mult: 1.15, invRs: 12.5, weeks: 14 },
+  {
+    id: "clean",
+    name: "Layout Optimization",
+    note: "No investment",
+    mult: 1.02,
+    invRs: 0,
+    weeks: 3,
+  },
+  {
+    id: "dig",
+    name: "Digitalization + AI",
+    note: "Low investment",
+    mult: 1.08,
+    invRs: 1.0,
+    weeks: 6,
+  },
+  {
+    id: "tri",
+    name: "Tri-Cavity Mold",
+    note: "Medium investment",
+    mult: 3.0,
+    invRs: 7.5,
+    weeks: 12,
+  },
+  {
+    id: "radical",
+    name: "Radical Re-Designs",
+    note: "High investment",
+    mult: 1.3,
+    invRs: 12.5,
+    weeks: 14,
+  },
+  {
+    id: "robot",
+    name: "Automation (Robot arm)",
+    note: "High investment / Low volume gain",
+    mult: 1.15,
+    invRs: 12.5,
+    weeks: 14,
+  },
 ];
 
 const RADAR_DATA = [
-  { axis: 'Efficiency & Productivity', before: 4.0, after: 9.0 },
-  { axis: 'Technology and Automation', before: 3.0, after: 8.5 },
-  { axis: 'Quality and Process reliability', before: 5.0, after: 9.5 },
-  { axis: 'Digitalization and AI', before: 2.0, after: 9.0 },
-  { axis: 'Scalability and Industrialization', before: 3.5, after: 9.8 },
+  { axis: "Efficiency & Productivity", before: 4.0, after: 9.0 },
+  { axis: "Technology and Automation", before: 3.0, after: 8.5 },
+  { axis: "Quality and Process reliability", before: 5.0, after: 9.5 },
+  { axis: "Digitalization and AI", before: 2.0, after: 9.0 },
+  { axis: "Scalability and Industrialization", before: 3.5, after: 9.8 },
 ];
 
 // ==========================================
@@ -56,10 +97,10 @@ export default function PresentationDeck() {
   // Keyboard and Fullscreen listeners
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
         e.preventDefault();
         nextSlide();
-      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
         e.preventDefault();
         prevSlide();
       }
@@ -69,12 +110,12 @@ export default function PresentationDeck() {
       setIsFullscreen(!!document.fullscreenElement);
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    window.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
     };
   }, [nextSlide, prevSlide]);
 
@@ -115,10 +156,10 @@ export default function PresentationDeck() {
   }, [checkedSolutions]);
 
   const titles = [
-    'PROPOSED SOLUTION',
-    'BUSINESS VALUE PROPOSITION',
-    'BUSINESS VALUE PROPOSITION',
-    'THANK YOU',
+    "PROPOSED SOLUTION",
+    "BUSINESS VALUE PROPOSITION",
+    "BUSINESS VALUE PROPOSITION",
+    "THANK YOU",
   ];
 
   return (
@@ -132,7 +173,9 @@ export default function PresentationDeck() {
       <header className="relative z-20 flex h-16 w-full items-center justify-between border-b border-sky-400 bg-white px-8 shadow-sm">
         <div className="flex items-center gap-4">
           <div className="flex items-center bg-[#00a3e0] px-6 py-2 shadow-sm">
-            <span className="text-xl font-black text-white tracking-widest mr-2">❯❯❯❯</span>
+            <span className="text-xl font-black text-white tracking-widest mr-2">
+              ❯❯❯❯
+            </span>
             <h1 className="text-xl font-extrabold tracking-wide text-white uppercase">
               {titles[currentSlide]}
             </h1>
@@ -142,11 +185,19 @@ export default function PresentationDeck() {
         <div className="flex items-center gap-6">
           <div className="flex flex-col items-end">
             <div className="flex items-center gap-1.5">
-              <span className="text-lg font-black tracking-tight text-[#0b2545]">NATEC</span>
-              <span className="text-xs font-semibold text-[#00a3e0]">medical ltd</span>
+              <span className="text-lg font-black tracking-tight text-[#0b2545]">
+                NATEC
+              </span>
+              <span className="text-xs font-semibold text-[#00a3e0]">
+                medical ltd
+              </span>
             </div>
-            <span className="text-[10px] text-slate-400 tracking-wider">CDMO</span>
-            <span className="text-[8px] text-[#00a3e0] italic">cutting edge technology for health</span>
+            <span className="text-[10px] text-slate-400 tracking-wider">
+              CDMO
+            </span>
+            <span className="text-[8px] text-[#00a3e0] italic">
+              cutting edge technology for health
+            </span>
           </div>
 
           <button
@@ -154,7 +205,11 @@ export default function PresentationDeck() {
             className="flex h-9 w-9 items-center justify-center rounded border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100"
             title="Plein écran (Échap pour quitter)"
           >
-            {isFullscreen ? <Minimize className="h-4 w-4" /> : <Maximize className="h-4 w-4" />}
+            {isFullscreen ? (
+              <Minimize className="h-4 w-4" />
+            ) : (
+              <Maximize className="h-4 w-4" />
+            )}
           </button>
         </div>
       </header>
@@ -166,7 +221,12 @@ export default function PresentationDeck() {
         className="relative flex-1 w-full overflow-hidden cursor-pointer bg-white"
         onClick={(e) => {
           const target = e.target;
-          if (target.closest('button') || target.closest('input') || target.closest('label')) return;
+          if (
+            target.closest("button") ||
+            target.closest("input") ||
+            target.closest("label")
+          )
+            return;
           if (e.clientX > window.innerWidth * 0.75) nextSlide();
           else if (e.clientX < window.innerWidth * 0.25) prevSlide();
         }}
@@ -179,14 +239,14 @@ export default function PresentationDeck() {
               alt="Proposed Solution Roadmap"
               className="max-h-full max-w-full object-contain"
               onError={(e) => {
-                e.target.src = '/image_d5a61b.png';
+                e.target.src = "/image_d5a61b.png";
               }}
             />
           </div>
         )}
 
         {/* SLIDE 2 & 3: BUSINESS VALUE PROPOSITION */}
-        {(currentSlide === 1 ) && (
+        {currentSlide === 1 && (
           <SlideBusinessValueInteractive
             checked={checkedSolutions}
             toggle={toggleSolution}
@@ -208,7 +268,7 @@ export default function PresentationDeck() {
               key={idx}
               onClick={() => setCurrentSlide(idx)}
               className={`h-2 transition-all rounded-full ${
-                currentSlide === idx ? 'w-6 bg-[#00a3e0]' : 'w-2 bg-slate-300'
+                currentSlide === idx ? "w-6 bg-[#00a3e0]" : "w-2 bg-slate-300"
               }`}
             />
           ))}
@@ -249,7 +309,7 @@ function SlideBusinessValueInteractive({ checked, toggle, impact }) {
   const totalAxes = RADAR_DATA.length;
 
   const getCoordinates = (index, val) => {
-    const angle = (Math.PI * 2 / totalAxes) * index - Math.PI / 2;
+    const angle = ((Math.PI * 2) / totalAxes) * index - Math.PI / 2;
     const r = (val / 10) * radius;
     return {
       x: center + r * Math.cos(angle),
@@ -260,14 +320,17 @@ function SlideBusinessValueInteractive({ checked, toggle, impact }) {
   const pointsBefore = RADAR_DATA.map((d, i) => getCoordinates(i, d.before));
   const pointsAfter = RADAR_DATA.map((d, i) => getCoordinates(i, d.after));
 
-  const pathBefore = pointsBefore.map((p) => `${p.x},${p.y}`).join(' ');
-  const pathAfter = pointsAfter.map((p) => `${p.x},${p.y}`).join(' ');
+  const pathBefore = pointsBefore.map((p) => `${p.x},${p.y}`).join(" ");
+  const pathAfter = pointsAfter.map((p) => `${p.x},${p.y}`).join(" ");
 
   // Pourcentages pour les Progress Bars
   const productionPct = Math.min((impact.production / SCALE_MAX) * 100, 100);
   const targetPct = (TARGET_PRODUCTION / SCALE_MAX) * 100;
   const maxInvestmentPossible = 33.5; // Max Rs
-  const investmentPct = Math.min((impact.investmentRs / maxInvestmentPossible) * 100, 100);
+  const investmentPct = Math.min(
+    (impact.investmentRs / maxInvestmentPossible) * 100,
+    100,
+  );
 
   return (
     <div className="flex h-full w-full items-center justify-between px-10 py-6 gap-8 bg-white">
@@ -285,12 +348,19 @@ function SlideBusinessValueInteractive({ checked, toggle, impact }) {
         </div>
 
         {/* SVG Radar Chart - Larger size */}
-        <svg width="600" height="600" viewBox="0 0 560 560" className="overflow-visible">
+        <svg
+          width="600"
+          height="600"
+          viewBox="0 0 560 560"
+          className="overflow-visible"
+        >
           {/* Grid circles with scale numbers */}
           {[2, 4, 6, 8, 10].map((level) => {
-            const ringPoints = RADAR_DATA.map((_, i) => getCoordinates(i, level))
+            const ringPoints = RADAR_DATA.map((_, i) =>
+              getCoordinates(i, level),
+            )
               .map((p) => `${p.x},${p.y}`)
-              .join(' ');
+              .join(" ");
             return (
               <g key={level}>
                 <polygon
@@ -320,10 +390,17 @@ function SlideBusinessValueInteractive({ checked, toggle, impact }) {
           {RADAR_DATA.map((d, i) => {
             const outer = getCoordinates(i, 10);
             const labelPos = getCoordinates(i, 12.5);
-            const words = d.axis.split(' ');
+            const words = d.axis.split(" ");
             return (
               <g key={i}>
-                <line x1={center} y1={center} x2={outer.x} y2={outer.y} stroke="#cbd5e1" strokeWidth="2" />
+                <line
+                  x1={center}
+                  y1={center}
+                  x2={outer.x}
+                  y2={outer.y}
+                  stroke="#cbd5e1"
+                  strokeWidth="2"
+                />
                 <text
                   x={labelPos.x}
                   y={labelPos.y}
@@ -345,19 +422,45 @@ function SlideBusinessValueInteractive({ checked, toggle, impact }) {
           })}
 
           {/* Before polygon */}
-          <polygon points={pathBefore} fill="rgba(0, 163, 224, 0.35)" stroke="#00a3e0" strokeWidth="3" />
-          
+          <polygon
+            points={pathBefore}
+            fill="rgba(0, 163, 224, 0.35)"
+            stroke="#00a3e0"
+            strokeWidth="3"
+          />
+
           {/* After polygon */}
-          <polygon points={pathAfter} fill="rgba(168, 85, 247, 0.25)" stroke="#a855f7" strokeWidth="3" />
+          <polygon
+            points={pathAfter}
+            fill="rgba(168, 85, 247, 0.25)"
+            stroke="#a855f7"
+            strokeWidth="3"
+          />
 
           {/* Data points for Before */}
           {pointsBefore.map((p, i) => (
-            <circle key={`before-${i}`} cx={p.x} cy={p.y} r="5" fill="#00a3e0" stroke="white" strokeWidth="2" />
+            <circle
+              key={`before-${i}`}
+              cx={p.x}
+              cy={p.y}
+              r="5"
+              fill="#00a3e0"
+              stroke="white"
+              strokeWidth="2"
+            />
           ))}
 
           {/* Data points for After */}
           {pointsAfter.map((p, i) => (
-            <circle key={`after-${i}`} cx={p.x} cy={p.y} r="5" fill="#a855f7" stroke="white" strokeWidth="2" />
+            <circle
+              key={`after-${i}`}
+              cx={p.x}
+              cy={p.y}
+              r="5"
+              fill="#a855f7"
+              stroke="white"
+              strokeWidth="2"
+            />
           ))}
         </svg>
       </div>
@@ -366,10 +469,13 @@ function SlideBusinessValueInteractive({ checked, toggle, impact }) {
       <div className="w-1/2 flex flex-col justify-center space-y-4 max-w-xl">
         {/* Output Header */}
         <div>
-          <h3 className="text-2xl font-black text-[#0b2545]">Projected annual output</h3>
+          <h3 className="text-2xl font-black text-[#0b2545]">
+            Projected annual output
+          </h3>
           <div className="flex items-baseline gap-3 mt-0.5">
             <span className="text-3xl font-extrabold text-[#0b2545]">
-              {BASE_PRODUCTION.toLocaleString('en-US')} ➜ {impact.production.toLocaleString('en-US')}
+              {BASE_PRODUCTION.toLocaleString("en-US")} ➜{" "}
+              {impact.production.toLocaleString("en-US")}
             </span>
           </div>
           <p className="text-xs font-semibold text-[#00a3e0] mt-0.5">
@@ -383,7 +489,8 @@ function SlideBusinessValueInteractive({ checked, toggle, impact }) {
             <div className="flex justify-between text-[11px] font-bold text-slate-600 mb-1">
               <span>Production Target Progress</span>
               <span className="text-[#00a3e0]">
-                {impact.production.toLocaleString('en-US')} / {TARGET_PRODUCTION.toLocaleString('en-US')} units
+                {impact.production.toLocaleString("en-US")} /{" "}
+                {TARGET_PRODUCTION.toLocaleString("en-US")} units
               </span>
             </div>
             <div className="relative h-3.5 w-full rounded-full bg-slate-200 overflow-hidden">
@@ -399,7 +506,7 @@ function SlideBusinessValueInteractive({ checked, toggle, impact }) {
             </div>
           </div>
 
-          <div>
+          {/* <div>
             <div className="flex justify-between text-[11px] font-bold text-slate-600 mb-1">
               <span>Investment Consumption</span>
               <span className="text-[#1d1b84]">{impact.investmentRs} M Rs</span>
@@ -410,30 +517,40 @@ function SlideBusinessValueInteractive({ checked, toggle, impact }) {
                 style={{ width: `${investmentPct}%` }}
               />
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* 4 Cards Impact */}
         <div className="grid grid-cols-2 gap-3">
           <div className="rounded-xl bg-[#1d1b84] p-4 text-white shadow-sm">
-            <span className="text-xs font-bold text-sky-200">Total investment</span>
-            <div className="text-2xl font-black mt-0.5">{impact.investmentRs} millions Rs</div>
+            <span className="text-xs font-bold text-sky-200">
+              Total investment
+            </span>
+            <div className="text-2xl font-black mt-0.5">
+              {impact.investmentRs} millions Rs
+            </div>
           </div>
 
           <div className="rounded-xl bg-[#2a4356] p-4 text-white shadow-sm">
             <span className="text-xs font-bold text-slate-300">Return</span>
             <div className="text-2xl font-black mt-0.5">
-              +{(impact.production - BASE_PRODUCTION).toLocaleString('en-US')}
+              +{(impact.production - BASE_PRODUCTION).toLocaleString("en-US")}
             </div>
           </div>
 
           <div className="rounded-xl bg-[#1d1b84] p-4 text-white shadow-sm">
-            <span className="text-xs font-bold text-sky-200">Critical path</span>
-            <div className="text-2xl font-black mt-0.5">{impact.weeks} weeks</div>
+            <span className="text-xs font-bold text-sky-200">
+              Critical path
+            </span>
+            <div className="text-2xl font-black mt-0.5">
+              {impact.weeks} weeks
+            </div>
           </div>
 
           <div className="rounded-xl bg-[#2a4356] p-4 text-white shadow-sm">
-            <span className="text-xs font-bold text-slate-300">Payback period</span>
+            <span className="text-xs font-bold text-slate-300">
+              Payback period
+            </span>
             <div className="text-2xl font-black mt-0.5">3 years</div>
           </div>
         </div>
@@ -443,10 +560,10 @@ function SlideBusinessValueInteractive({ checked, toggle, impact }) {
           {SOLUTIONS_DATA.map((sol) => (
             <label
               key={sol.id}
-              className={`flex cursor-pointer items-center justify-between rounded-lg border px-3 py-2 transition ${
+              className={`flex w-full cursor-pointer items-center rounded-lg border px-3 py-2 transition ${
                 checked[sol.id]
-                  ? 'border-[#00a3e0] bg-sky-50/50'
-                  : 'border-slate-200 bg-white opacity-60'
+                  ? "border-[#00a3e0] bg-sky-50/50"
+                  : "border-slate-200 bg-white opacity-60"
               }`}
             >
               <div className="flex items-center gap-2.5">
@@ -454,12 +571,14 @@ function SlideBusinessValueInteractive({ checked, toggle, impact }) {
                   type="checkbox"
                   checked={checked[sol.id]}
                   onChange={() => toggle(sol.id)}
-                  className="h-4 w-4 rounded border-slate-300 text-[#00a3e0] focus:ring-[#00a3e0]"
+                  className="custom-checkbox"
                 />
-                <span className="text-xs font-bold text-slate-800">{sol.name}</span>
+                <span className="text-xs font-bold text-slate-800">
+                  {sol.name}
+                </span>
               </div>
 
-              <span className="font-mono text-[11px] text-slate-500">
+              <span className="ml-auto shrink-0 whitespace-nowrap font-mono text-[11px] text-slate-500">
                 x{sol.mult.toFixed(2)} · {sol.invRs}M Rs · {sol.weeks}w
               </span>
             </label>
@@ -489,8 +608,12 @@ function ThankYouSlide() {
         {/* Company Tagline */}
         <div className="space-y-2">
           <div className="flex items-center justify-center gap-2">
-            <span className="text-4xl font-black tracking-tight text-[#0b2545]">NATEC</span>
-            <span className="text-xl font-semibold text-[#00a3e0]">medical ltd</span>
+            <span className="text-4xl font-black tracking-tight text-[#0b2545]">
+              NATEC
+            </span>
+            <span className="text-xl font-semibold text-[#00a3e0]">
+              medical ltd
+            </span>
           </div>
           <p className="text-lg text-[#00a3e0] italic font-medium">
             cutting edge technology for health
@@ -509,9 +632,18 @@ function ThankYouSlide() {
 
         {/* Decorative elements */}
         <div className="flex justify-center gap-3 pt-8">
-          <div className="h-3 w-3 rounded-full bg-[#00a3e0] animate-pulse" style={{ animationDelay: '0s' }} />
-          <div className="h-3 w-3 rounded-full bg-[#00a3e0] animate-pulse" style={{ animationDelay: '0.2s' }} />
-          <div className="h-3 w-3 rounded-full bg-[#00a3e0] animate-pulse" style={{ animationDelay: '0.4s' }} />
+          <div
+            className="h-3 w-3 rounded-full bg-[#00a3e0] animate-pulse"
+            style={{ animationDelay: "0s" }}
+          />
+          <div
+            className="h-3 w-3 rounded-full bg-[#00a3e0] animate-pulse"
+            style={{ animationDelay: "0.2s" }}
+          />
+          <div
+            className="h-3 w-3 rounded-full bg-[#00a3e0] animate-pulse"
+            style={{ animationDelay: "0.4s" }}
+          />
         </div>
       </div>
     </div>
