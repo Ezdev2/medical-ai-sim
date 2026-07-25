@@ -45,7 +45,7 @@ const SOLUTIONS_DATA = [
     note: "High investment",
     mult: 2.3, // Updated multiplier
     invRs: 30.0, // Updated real price
-    weeks: 14,
+    weeks: 24,
   },
   {
     id: "robot",
@@ -53,7 +53,7 @@ const SOLUTIONS_DATA = [
     note: "High investment / Low volume gain",
     mult: 1.15,
     invRs: 12.5,
-    weeks: 14,
+    weeks: 12,
   },
 ];
 
@@ -527,12 +527,12 @@ function SlideBusinessValueInteractive({ checked, toggle, impact }) {
               Critical path
             </span>
             <div className="text-2xl font-black mt-0.5">
-              {impact.weeks} weeks
+              {impact.weeks} months
             </div>
           </div>
 
           <div className="rounded-xl bg-[#2a4356] p-4 text-white shadow-sm">
-            <span className="text-xs font-bold text-slate-300">Return</span>
+            <span className="text-xs font-bold text-slate-300">Return (Production)</span>
             <div className="text-2xl font-black mt-0.5">
               +{(impact.production - BASE_PRODUCTION).toLocaleString("en-US")}
             </div>
