@@ -36,15 +36,15 @@ const SOLUTIONS_DATA = [
     name: "Tri-Cavity Mold",
     note: "Medium investment",
     mult: 3.0,
-    invRs: 24.0, // Updated real price
+    invRs: 6.0, // Updated real price
     weeks: 12,
   },
   {
     id: "radical",
     name: "Radical Re-Designs",
     note: "High investment",
-    mult: 2.3, // Updated multiplier
-    invRs: 30.0, // Updated real price
+    mult: 2.0, // Updated multiplier
+    invRs: 12.0, // Updated real price
     weeks: 24,
   },
   {
