@@ -10,7 +10,6 @@ import { Maximize, Minimize, ChevronLeft, ChevronRight } from "lucide-react";
 // ==========================================
 // DATA STRUCTURE (Dynamic & Configurable)
 // ==========================================
-
 const BASE_PRODUCTION = 150_000;
 const TARGET_PRODUCTION = 750_000;
 const SCALE_MAX = 900_000;
@@ -20,16 +19,16 @@ const SOLUTIONS_DATA = [
     id: "clean",
     name: "Layout Optimization",
     note: "No investment",
-    mult: 1.02,
-    invRs: 0,
+    mult: 1.15, // Updated multiplier
+    invRs: 0.1, // Updated real price
     weeks: 3,
   },
   {
     id: "dig",
     name: "Digitalization + AI",
     note: "Low investment",
-    mult: 1.08,
-    invRs: 1.0,
+    mult: 1.1, // Updated multiplier
+    invRs: 0.5, // Updated real price
     weeks: 6,
   },
   {
@@ -37,15 +36,15 @@ const SOLUTIONS_DATA = [
     name: "Tri-Cavity Mold",
     note: "Medium investment",
     mult: 3.0,
-    invRs: 7.5,
+    invRs: 24.0, // Updated real price
     weeks: 12,
   },
   {
     id: "radical",
     name: "Radical Re-Designs",
     note: "High investment",
-    mult: 1.3,
-    invRs: 12.5,
+    mult: 2.3, // Updated multiplier
+    invRs: 30.0, // Updated real price
     weeks: 14,
   },
   {
@@ -59,11 +58,11 @@ const SOLUTIONS_DATA = [
 ];
 
 const RADAR_DATA = [
-  { axis: "Efficiency & Productivity", before: 4.0, after: 9.0 },
-  { axis: "Technology and Automation", before: 3.0, after: 8.5 },
-  { axis: "Quality and Process reliability", before: 5.0, after: 9.5 },
+  { axis: "Efficiency & Productivity", before: 5.0, after: 8.0 },
+  { axis: "Technology and Automation", before: 5.0, after: 8.0 },
+  { axis: "Quality and Process reliability", before: 5.0, after: 6.0 },
   { axis: "Digitalization and AI", before: 2.0, after: 9.0 },
-  { axis: "Scalability and Industrialization", before: 3.5, after: 9.8 },
+  { axis: "Scalability and Industrialization", before: 5, after: 8.0 },
 ];
 
 // ==========================================
@@ -170,7 +169,7 @@ export default function PresentationDeck() {
       {/* ========================================== */}
       {/* HEADER                                     */}
       {/* ========================================== */}
-      <header className="relative z-20 flex h-16 w-full items-center justify-between border-b border-sky-400 bg-white px-8 shadow-sm">
+      <header className="relative z-20 flex h-24 w-full items-center justify-between border-b border-sky-400 bg-white px-8 shadow-sm">
         <div className="flex items-center gap-4">
           <div className="flex items-center bg-[#00a3e0] px-6 py-2 shadow-sm">
             <span className="text-xl font-black text-white tracking-widest mr-2">
@@ -184,7 +183,7 @@ export default function PresentationDeck() {
 
         <div className="flex items-center gap-6">
           <div className="flex flex-col items-end">
-            <div className="flex items-center gap-1.5">
+            {/* <div className="flex items-center gap-1.5">
               <span className="text-lg font-black tracking-tight text-[#0b2545]">
                 NATEC
               </span>
@@ -197,7 +196,8 @@ export default function PresentationDeck() {
             </span>
             <span className="text-[8px] text-[#00a3e0] italic">
               cutting edge technology for health
-            </span>
+            </span> */}
+            <img width={150} src="/logo-natec.png" alt="logo-natec" />
           </div>
 
           <button
@@ -521,13 +521,13 @@ function SlideBusinessValueInteractive({ checked, toggle, impact }) {
         </div>
 
         {/* 4 Cards Impact */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-3 gap-3">
           <div className="rounded-xl bg-[#1d1b84] p-4 text-white shadow-sm">
             <span className="text-xs font-bold text-sky-200">
-              Total investment
+              Critical path
             </span>
             <div className="text-2xl font-black mt-0.5">
-              {impact.investmentRs} millions Rs
+              {impact.weeks} weeks
             </div>
           </div>
 
@@ -540,18 +540,11 @@ function SlideBusinessValueInteractive({ checked, toggle, impact }) {
 
           <div className="rounded-xl bg-[#1d1b84] p-4 text-white shadow-sm">
             <span className="text-xs font-bold text-sky-200">
-              Critical path
+              Total investment (Rs)
             </span>
             <div className="text-2xl font-black mt-0.5">
-              {impact.weeks} weeks
+              {impact.investmentRs} millions
             </div>
-          </div>
-
-          <div className="rounded-xl bg-[#2a4356] p-4 text-white shadow-sm">
-            <span className="text-xs font-bold text-slate-300">
-              Payback period
-            </span>
-            <div className="text-2xl font-black mt-0.5">3 years</div>
           </div>
         </div>
 
@@ -608,16 +601,11 @@ function ThankYouSlide() {
         {/* Company Tagline */}
         <div className="space-y-2">
           <div className="flex items-center justify-center gap-2">
-            <span className="text-4xl font-black tracking-tight text-[#0b2545]">
-              NATEC
-            </span>
-            <span className="text-xl font-semibold text-[#00a3e0]">
-              medical ltd
-            </span>
+            <img width={150} src="/logo-natec.png" alt="logo-natec" />
           </div>
-          <p className="text-lg text-[#00a3e0] italic font-medium">
+          {/* <p className="text-lg text-[#00a3e0] italic font-medium">
             cutting edge technology for health
-          </p>
+          </p> */}
         </div>
 
         {/* Additional Message */}
@@ -631,7 +619,7 @@ function ThankYouSlide() {
         </div>
 
         {/* Decorative elements */}
-        <div className="flex justify-center gap-3 pt-8">
+        {/* <div className="flex justify-center gap-3 pt-8">
           <div
             className="h-3 w-3 rounded-full bg-[#00a3e0] animate-pulse"
             style={{ animationDelay: "0s" }}
@@ -644,7 +632,7 @@ function ThankYouSlide() {
             className="h-3 w-3 rounded-full bg-[#00a3e0] animate-pulse"
             style={{ animationDelay: "0.4s" }}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
