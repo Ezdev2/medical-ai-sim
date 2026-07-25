@@ -10,8 +10,8 @@ import { Maximize, Minimize, ChevronLeft, ChevronRight } from "lucide-react";
 // ==========================================
 // DATA STRUCTURE (Dynamic & Configurable)
 // ==========================================
-const BASE_PRODUCTION = 150_000;
-const TARGET_PRODUCTION = 750_000;
+const BASE_PRODUCTION = 100_000;
+const TARGET_PRODUCTION = 500_000;
 const SCALE_MAX = 900_000;
 
 const SOLUTIONS_DATA = [
